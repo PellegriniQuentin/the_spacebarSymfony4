@@ -6,7 +6,17 @@ $(document).ready(function () {
         var $link = $(e.currentTarget);// this is the link that was just click
         $link.toggleClass('fa-heart-o').toggleClass('fa-heart');
 
-        $('.js-like-article-cont').html('TEST');
+        $.ajax({
+            method: 'POST',
+            url: $link.attr('href')
+        }).done(function(data){
+
+            //$('.js-like-article-cont').html('TEST');
+            $('.js-like-article-cont').html(data.hearts);
+
+        });
+
+
 
     });
 });
