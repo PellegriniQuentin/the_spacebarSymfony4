@@ -12,6 +12,7 @@ use Michelf\MarkdownInterface;
 use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Cache\Adapter\AdapterInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -37,7 +38,7 @@ class ArticleController extends  AbstractController
     //When you change the url call its return in the $slug l'urlapres/news
     //Route and controller systeme
 
-    public function show($slug,MarkdownInterface $markdown)//,Environment $twigEnvironment
+    public function show($slug,MarkdownInterface $markdown, AdapterInterface $cache)//,Environment $twigEnvironment
     {
         //return new Response('Future page to show one space articles!');
         // return new Response(sprintf(
