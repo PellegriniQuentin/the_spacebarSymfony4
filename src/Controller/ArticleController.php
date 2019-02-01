@@ -21,13 +21,13 @@ class ArticleController extends  AbstractController
     public function homepage() //its call a action
         //a controller must return a symfony response object
     {
-        return new Response('My first page !!!YOUPI');
-        // return $this->render('article/homepage.html.twig');
+        //return new Response('My first page !!!YOUPI');
+         return $this->render('article/homepage.html.twig');
     }
     //ITs call slug
     ///news/why-asteroids-taste-like-bacon
     /**
-     * @Route("/news/{slug}")//match with enything
+     * @Route("/news/{slug}", name="article_show")//match with enything
      *
      */
     //When you change the url call its return in the $slug l'urlapres/news
@@ -52,6 +52,16 @@ class ArticleController extends  AbstractController
             'title' => ucwords(str_replace('-',' ',$slug)),
             'comments'=> $comments,
         ]);
+    }
+
+    /**
+     * @Route("/news/{slug}/heart", name="article_toggle_Heart"}
+     */
+    public  function  toggleArticleHeart($slug)
+    {
+        // TODO - actually heart/unheart the article!
+
+        return new JsonResponse(['hearts' =>rand(5,100) ]);
     }
 
 
